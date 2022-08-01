@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0-windows</TargetFramework>
+        <UseWPF>true</UseWPF>
+        <Platforms>AnyCPU;x64</Platforms>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\PMB.Application\PMB.Application.csproj" />
+      <ProjectReference Include="..\PMB.Browsers.Common\PMB.Browsers.Common.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="cef.redist.x64" Version="101.0.18" />
+      <PackageReference Include="CefSharp.Common.NETCore" Version="101.0.180" />
+      <PackageReference Include="CefSharp.Wpf.NETCore" Version="101.0.180" />
+      <PackageReference Include="Microsoft.Extensions.Options" Version="6.0.0" />
+    </ItemGroup>
+
+</Project>

@@ -1,0 +1,51 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0-windows</TargetFramework>
+        <UseWPF>true</UseWPF>
+        <Platforms>AnyCPU;x64</Platforms>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="cef.redist.x64" Version="101.0.18" />
+        <PackageReference Include="CefSharp.Wpf.NETCore" Version="101.0.180" />
+        <PackageReference Include="CefSharp.Common.NETCore" Version="101.0.180" />
+        <PackageReference Include="chromiumembeddedframework.runtime.win-x64" Version="101.0.18" />
+        <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="6.0.0" />
+        <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+        <PackageReference Include="System.Reactive" Version="5.0.0" />
+        <PackageReference Include="System.Reactive.Core" Version="5.0.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Include="JavaScript\fonbet.js">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </EmbeddedResource>
+      <EmbeddedResource Include="JavaScript\ligastavok.js">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </EmbeddedResource>
+      <EmbeddedResource Include="JavaScript\bet365.js">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </EmbeddedResource>
+      <EmbeddedResource Include="JavaScript\marathon.js">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </EmbeddedResource>
+      <EmbeddedResource Include="JavaScript\pinnacle.js">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </EmbeddedResource>
+        <EmbeddedResource Include="JavaScript\Anonym\fakeinjection.js">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </EmbeddedResource>
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\PMB.Domain\PMB.Domain.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Update="JavaScript\Anonym\fakeinjection.js">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+    </ItemGroup>
+    
+</Project>

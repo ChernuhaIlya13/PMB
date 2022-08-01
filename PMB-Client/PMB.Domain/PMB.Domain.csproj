@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+      <TargetFramework>net6.0</TargetFramework>
+      <Platforms>AnyCPU;x64</Platforms>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="cef.redist.x64" Version="101.0.18" />
+      <PackageReference Include="CefSharp.Common.NETCore" Version="101.0.180" />
+      <PackageReference Include="CefSharp.Wpf.NETCore" Version="101.0.180" />
+      <PackageReference Include="PMB.Abb.Models" Version="1.196.0" />
+      <PackageReference Include="PMB.Models" Version="1.196.0" />
+    </ItemGroup>
+
+</Project>

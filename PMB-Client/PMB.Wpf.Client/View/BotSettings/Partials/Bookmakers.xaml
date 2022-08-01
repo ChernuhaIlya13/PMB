@@ -1,0 +1,461 @@
+﻿<UserControl x:Class="PMB.Wpf.Client.View.BotSettings.Partials.Bookmakers"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+             mc:Ignorable="d"
+             d:DesignHeight="650" d:DesignWidth="800">
+    <UserControl.Resources>
+    </UserControl.Resources>
+
+    <Grid HorizontalAlignment="Left">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="232*" />
+            <ColumnDefinition Width="25*" />
+            <ColumnDefinition Width="528*" />
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="0">
+            <StackPanel Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center">
+                <mah:ToggleSwitch Command="{Binding Path=DisableEnableBookmaker,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" CommandParameter="marathon">
+                    <mah:ToggleSwitch.IsOn>
+                        <Binding Path="Settings.Bookmakers[0].IsActive" Mode="TwoWay"
+                                 UpdateSourceTrigger="PropertyChanged" />
+                    </mah:ToggleSwitch.IsOn>
+                </mah:ToggleSwitch>
+                <Button MinWidth="80"
+                        Command="{Binding Path=ChangeActiveBookmaker, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" CommandParameter="marathon">>
+                    Марафон
+                </Button>
+            </StackPanel>
+            <StackPanel Grid.Column="0" Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Top">
+                <mah:ToggleSwitch Command="{Binding Path=DisableEnableBookmaker,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" CommandParameter="ligastavok">
+                    <mah:ToggleSwitch.IsOn>
+                        <Binding Path="Settings.Bookmakers[1].IsActive" Mode="TwoWay"
+                                 UpdateSourceTrigger="PropertyChanged" />
+                    </mah:ToggleSwitch.IsOn>
+                </mah:ToggleSwitch>
+                <Button MinWidth="80"
+                        Command="{Binding Path=ChangeActiveBookmaker, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" CommandParameter="ligastavok">>
+                    Лига Ставок
+                </Button>
+            </StackPanel>
+            <StackPanel Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center">
+                <mah:ToggleSwitch Command="{Binding Path=DisableEnableBookmaker,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" CommandParameter="pinnacle">
+                    <mah:ToggleSwitch.IsOn>
+                        <Binding Path="Settings.Bookmakers[2].IsActive" Mode="TwoWay"
+                                 UpdateSourceTrigger="PropertyChanged" />
+                    </mah:ToggleSwitch.IsOn>
+                </mah:ToggleSwitch>
+                <Button MinWidth="80"
+                        Command="{Binding Path=ChangeActiveBookmaker, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" CommandParameter="pinnacle">
+                    Пиннакл
+                </Button>
+            </StackPanel>
+            <StackPanel Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center">
+                <mah:ToggleSwitch Command="{Binding Path=DisableEnableBookmaker,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" CommandParameter="bet365">
+                    <mah:ToggleSwitch.IsOn>
+                        <Binding Path="Settings.Bookmakers[3].IsActive" Mode="TwoWay"
+                                 UpdateSourceTrigger="PropertyChanged" />
+                    </mah:ToggleSwitch.IsOn>
+                </mah:ToggleSwitch>
+                <Button MinWidth="80"
+                        Command="{Binding Path=ChangeActiveBookmaker, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" CommandParameter="bet365">
+                    bet365
+                </Button>
+            </StackPanel>
+            <StackPanel Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center">
+                <mah:ToggleSwitch Command="{Binding Path=DisableEnableBookmaker,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" CommandParameter="fonbet">
+                    <mah:ToggleSwitch.IsOn>
+                        <Binding Path="Settings.Bookmakers[4].IsActive" Mode="TwoWay"
+                                 UpdateSourceTrigger="PropertyChanged" />
+                    </mah:ToggleSwitch.IsOn>
+                </mah:ToggleSwitch>
+                <Button MinWidth="80"
+                        Command="{Binding Path=ChangeActiveBookmaker, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" CommandParameter="fonbet">
+                    fonbet
+                </Button>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel x:Name="BKS" Grid.Column="1" Grid.ColumnSpan="2">
+            <TabControl>
+                <TabItem>
+                    <TabItem.Header>
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+                            <TextBlock Text="Основные" Foreground="#FF877F7F" FontSize="12" />
+                        </StackPanel>
+                    </TabItem.Header>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="75*" />
+                            <ColumnDefinition Width="12*"/>
+                            <ColumnDefinition Width="58*" />
+                            <ColumnDefinition Width="412*" />
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Orientation="Vertical" Grid.ColumnSpan="4">
+                            <StackPanel Orientation="Horizontal" Margin="5 5 5 5">
+                                <Label>Адрес зеркала</Label>
+                                <TextBox
+                                    Text="{Binding Path=CurrentActiveBookmaker.Uri, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                    MinWidth="300" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="5 5 5 5">
+                                <Label>Валюта</Label>
+                                <ComboBox MinWidth="100"
+                                          Text="{Binding Path=CurrentActiveBookmaker.CurrencyInfo.CurrencyName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                                    <ComboBoxItem>
+                                        Рубль
+                                    </ComboBoxItem>
+                                    <ComboBoxItem>
+                                        Евро
+                                    </ComboBoxItem>
+                                    <ComboBoxItem>
+                                        Доллар
+                                    </ComboBoxItem>
+                                </ComboBox>
+                                <ComboBox Margin="10 0 0 0"
+                                          Text="{Binding Path=CurrentActiveBookmaker.CurrencyInfo.RoundRule, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                          MinWidth="100" Name="Округление">
+                                    <ComboBoxItem>
+                                        000000
+                                    </ComboBoxItem>
+                                    <ComboBoxItem>
+                                        000000
+                                    </ComboBoxItem>
+                                    <ComboBoxItem>
+                                        000000
+                                    </ComboBoxItem>
+                                </ComboBox>
+                                <CheckBox
+                                    IsChecked="{Binding Path=CurrentActiveBookmaker.CurrencyInfo.UseCommonRuleRound, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                    Margin="10 0 0 0">
+                                    Общие правила округления
+                                </CheckBox>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="5 5 5 5">
+                                <Label>Доходность вилки</Label>
+                                <TextBox MinWidth="66" TextAlignment="Center"
+                                         Text="{Binding Path=CurrentActiveBookmaker.ProfitFork.Start, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                <TextBlock VerticalAlignment="Center">До</TextBlock>
+                                <TextBox MinWidth="66"
+                                         Text="{Binding Path=CurrentActiveBookmaker.ProfitFork.Finish, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                         TextAlignment="Center" />
+                                <CheckBox
+                                    IsChecked="{Binding Path=CurrentActiveBookmaker.ProfitFork.UseCommonRuleRound, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                    Margin="10 0 0 0">
+                                    Общие правила округления
+                                </CheckBox>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="5 5 5 5">
+                                <Label>Коэффициент</Label>
+                                <TextBox MinWidth="66"
+                                         Text="{Binding Path=CurrentActiveBookmaker.CoefficientFork.Start, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                         TextAlignment="Center" />
+                                <TextBlock VerticalAlignment="Center">До</TextBlock>
+                                <TextBox MinWidth="66"
+                                         Text="{Binding Path=CurrentActiveBookmaker.CoefficientFork.Finish, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                         TextAlignment="Center" />
+                                <CheckBox Margin="10 0 0 0"
+                                          IsChecked="{Binding CurrentActiveBookmaker.CoefficientFork.UseCommonRuleRound, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                                    Общие правила округления
+                                </CheckBox>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="5 5 5 5">
+                                <Label>Время жизни вилки,сек</Label>
+                                <TextBox MinWidth="66"
+                                         Text="{Binding Path=CurrentActiveBookmaker.TimeOfLifeFork.Start, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                         TextAlignment="Center" />
+                                <TextBlock VerticalAlignment="Center">До</TextBlock>
+                                <TextBox MinWidth="66"
+                                         Text="{Binding Path=CurrentActiveBookmaker.TimeOfLifeFork.Finish, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                         TextAlignment="Center" />
+                                <CheckBox Margin="10 0 0 0"
+                                          IsChecked="{Binding CurrentActiveBookmaker.TimeOfLifeFork.UseCommonRuleRound, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                                    Общие правила округления
+                                </CheckBox>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="5 5 5 5">
+                                <Label FontSize="12">Пауза после успешно проставленной вилки</Label>
+                                <TextBox MinWidth="66"
+                                         Text="{Binding CurrentActiveBookmaker.PauseAfterSuccessfulAttemptPutDown.Start, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                         TextAlignment="Center" />
+                                <TextBlock VerticalAlignment="Center">До</TextBlock>
+                                <TextBox MinWidth="66" TextAlignment="Center"
+                                         Text="{Binding CurrentActiveBookmaker.PauseAfterSuccessfulAttemptPutDown.Finish, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                <CheckBox Margin="10 0 0 0"
+                                          IsChecked="{Binding CurrentActiveBookmaker.PauseAfterSuccessfulAttemptPutDown.UseCommonRuleRound, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                                    Общие правила округления
+                                </CheckBox>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="5 5 5 5">
+                                <Label FontSize="12">Количество вилок в одном событии</Label>
+                                <TextBox MinWidth="66" TextAlignment="Center"
+                                         Text="{Binding CurrentActiveBookmaker.CountForksInOneEvent.CountForks, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                <CheckBox Margin="10 0 0 0"
+                                          IsChecked="{Binding CurrentActiveBookmaker.CountForksInOneEvent.UseCommonRuleRound, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                                    Общие правила округления
+                                </CheckBox>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="5 5 5 5">
+                                <Label FontSize="12">Количество идентичных вилок в одном событии</Label>
+                                <TextBox MinWidth="66" TextAlignment="Center"
+                                         Text="{Binding CurrentActiveBookmaker.CountOfIdenticalSurebetsInOneEvent.CountForks, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                <CheckBox Margin="10 0 0 0"
+                                          IsChecked="{Binding CurrentActiveBookmaker.CountOfIdenticalSurebetsInOneEvent.UseCommonRuleRound, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                                    Общие правила округления
+                                </CheckBox>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="5 5 5 5">
+                                <Label FontSize="12">Остановка бота при балансе на Бк,руб</Label>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBox MinWidth="66" TextAlignment="Center"
+                                             Text="{Binding CurrentActiveBookmaker.StopBotBalance.Start, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                    <TextBlock VerticalAlignment="Center">До</TextBlock>
+                                    <TextBox MinWidth="66" TextAlignment="Center"
+                                             Text="{Binding CurrentActiveBookmaker.StopBotBalance.Finish, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                </StackPanel>
+
+                            </StackPanel>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <CheckBox Grid.Row="0" Grid.Column="0"
+                                          IsChecked="{Binding CurrentActiveBookmaker.RestrictSum.UseCommonRuleRound, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                                    Использовать ограничения сумм
+                                </CheckBox>
+                                <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Horizontal">
+                                    <Label>Не ставить менее,руб</Label>
+                                    <TextBox MinWidth="66"
+                                             Text="{Binding CurrentActiveBookmaker.RestrictSum.Start, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                </StackPanel>
+                                <StackPanel Grid.Row="2" Grid.Column="0" Orientation="Horizontal">
+                                    <Label>Не ставить менее,руб</Label>
+                                    <TextBox MinWidth="66"
+                                             Text="{Binding CurrentActiveBookmaker.RestrictSum.Finish, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                </StackPanel>
+                                <CheckBox Grid.Row="0" Grid.Column="1">Проверка текущего счета в футболе(не добавлено в настройки)</CheckBox>
+                                <CheckBox Grid.Row="1" Grid.Column="1"
+                                          IsChecked="{Binding CurrentActiveBookmaker.CheckMaxMin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                                    Проверка минимумов и максимумов
+                                </CheckBox>
+                            </Grid>
+                            <StackPanel Margin="0 5 0 0" Orientation="Horizontal">
+                                <Label>Ограничения инициатора</Label>
+                                <ComboBox
+                                    Text="{Binding CurrentActiveBookmaker.RestrictInitiator, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                    MinWidth="100" HorizontalAlignment="Left">
+                                    <ComboBoxItem>
+                                        Игнорировать
+                                    </ComboBoxItem>
+                                </ComboBox>
+                            </StackPanel>
+                            <CheckBox
+                                IsChecked="{Binding CurrentActiveBookmaker.CleverSlowing, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                                Умное замедление
+                            </CheckBox>
+                        </StackPanel>
+                    </Grid>
+                </TabItem>
+                <TabItem>
+                    <TabItem.Header>
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+                            <TextBlock Text="Браузер" Foreground="#FF877F7F" FontSize="12" />
+                        </StackPanel>
+                    </TabItem.Header>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="15*" />
+                            <ColumnDefinition Width="96*"/>
+                            <ColumnDefinition Width="112*"/>
+                            <ColumnDefinition Width="193*" />
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Margin="0 0 100 0" Grid.Row="0" Grid.Column="0" Orientation="Vertical" Grid.ColumnSpan="3">
+                            <TextBlock FontSize="16">Прокси</TextBlock>
+                            <CheckBox
+                                IsChecked="{Binding Path=CurrentActiveBookmaker.BrowserOptions.Proxy.UseProxy, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                Grid.Row="0" Grid.Column="0" Margin="0 10 0 0">
+                                Использовать прокси
+                            </CheckBox>
+                            <Grid Margin="0 15 0 0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="136.723" />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <Label>Схема</Label>
+                                <ComboBox
+                                    Text="{Binding Path=CurrentActiveBookmaker.BrowserOptions.Proxy.Schema, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                    Grid.Column="1">
+                                    <ComboBoxItem>
+                                        Http
+                                    </ComboBoxItem>
+                                    <ComboBoxItem>
+                                        Https
+                                    </ComboBoxItem>
+                                    <ComboBoxItem>
+                                        Socks4
+                                    </ComboBoxItem>
+                                    <ComboBoxItem>
+                                        Socks5
+                                    </ComboBoxItem>
+                                </ComboBox>
+                            </Grid>
+                            <Grid Margin="0 10 0 10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <Label>Ip адрес</Label>
+                                <TextBox
+                                    Text="{Binding Path=CurrentActiveBookmaker.BrowserOptions.Proxy.IpAdress, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                    Grid.Column="1" />
+                            </Grid>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <Label>Порт</Label>
+                                <TextBox
+                                    Text="{Binding Path=CurrentActiveBookmaker.BrowserOptions.Proxy.Port, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                    Grid.Column="1" />
+                            </Grid>
+                        </StackPanel>
+                        <StackPanel Margin="5 17 0 0" Grid.Row="0" Grid.Column="3">
+                            <CheckBox
+                                IsChecked="{Binding Path=CurrentActiveBookmaker.BrowserOptions.Proxy.NeedAuthProxy, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                Grid.Row="0" Grid.Column="0" Margin="0 10 0 0">
+                                Авторизация прокси
+                            </CheckBox>
+                            <Grid Margin="0 15 0 10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <Label>Логин</Label>
+                                <TextBox
+                                    Text="{Binding Path=CurrentActiveBookmaker.BrowserOptions.Proxy.Login, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                    Grid.Column="1" />
+                            </Grid>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <Label>Пароль</Label>
+                                <TextBox
+                                    Text="{Binding Path=CurrentActiveBookmaker.BrowserOptions.Proxy.Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                    Grid.Column="1" />
+                            </Grid>
+                        </StackPanel>
+                        <StackPanel Grid.Column="0" Orientation="Vertical" Grid.ColumnSpan="3" Margin="0,162,0,71" Grid.RowSpan="3">
+                            <TextBlock FontSize="16">Авторизация в Бк</TextBlock>
+                            <CheckBox
+                                IsChecked="{Binding Path=CurrentActiveBookmaker.BrowserOptions.Auth.UseAuthInBk, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                Grid.Row="0" Grid.Column="0" Margin="0 10 0 0">
+                                Использовать
+                            </CheckBox>
+                            <Grid Margin="0 15 0 0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <Label>Логин</Label>
+                                <TextBox
+                                    Text="{Binding Path=CurrentActiveBookmaker.BrowserOptions.Auth.Login, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                    Grid.Column="1" />
+                            </Grid>
+                            <Grid Margin="0 10 0 10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <Label>Пароль</Label>
+                                <TextBox
+                                    Text="{Binding Path=CurrentActiveBookmaker.BrowserOptions.Auth.Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                    Grid.Column="1" />
+                            </Grid>
+
+                        </StackPanel>
+                        <StackPanel Margin="5,162,0,71" Grid.Column="3" Orientation="Vertical" Grid.RowSpan="3">
+                            <CheckBox
+                                IsChecked="{Binding Path=CurrentActiveBookmaker.BrowserOptions.Auth.ShowImages, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                Margin="0 30 0 0">
+                                Отображать изображения
+                            </CheckBox>
+                            <Label>Может замедлить работу бота!!!</Label>
+                        </StackPanel>
+                        <StackPanel Margin="0 130 0 0" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="4">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <CheckBox
+                                    Grid.Column="0"
+                                IsChecked="{Binding Path=CurrentActiveBookmaker.BrowserOptions.SaveCacheInMemory, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                                    Сохранять кэш в память
+                                </CheckBox>
+                                <Button Command="{Binding GenerateNewFakeProfile}" Grid.Column="1" HorizontalAlignment="Right">Сгенерировать новый профиль</Button>
+                            </Grid>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition Width="237.822"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Button Command="{Binding RemoveDataOfBrowser}" Grid.Column="0"  HorizontalAlignment="Left">
+                                    <Button.Resources>
+                                        <Style TargetType="Border">
+                                            <Setter Property="CornerRadius" Value="5" />
+                                        </Style>
+                                    </Button.Resources>
+                                    Удалить данные браузера
+                                </Button>
+                                <CheckBox Margin="0 0 27 0" HorizontalAlignment="Right" Grid.Column="1" IsChecked="{Binding Path=CurrentActiveBookmaker.BrowserOptions.Anonym.DisableAnonym, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                >Отключить анонимность
+                                </CheckBox>
+                            </Grid>
+                            
+                        </StackPanel>
+                    </Grid>
+                </TabItem>
+
+                <TabItem>
+                    <TabItem.Header>
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+                            <TextBlock Text="Доп" Foreground="#FF877F7F" FontSize="12" />
+                        </StackPanel>
+                    </TabItem.Header>
+                </TabItem>
+                <TabItem>
+                    <TabItem.Header>
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+                            <TextBlock Text="Вилки и ставки" Foreground="#FF877F7F" FontSize="12" />
+                        </StackPanel>
+                    </TabItem.Header>
+                </TabItem>
+                <TabItem>
+                    <TabItem.Header>
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+                            <TextBlock Text="Менеджер" Foreground="#FF877F7F" FontSize="12" />
+                        </StackPanel>
+                    </TabItem.Header>
+                </TabItem>
+            </TabControl>
+        </StackPanel>
+    </Grid>
+</UserControl>

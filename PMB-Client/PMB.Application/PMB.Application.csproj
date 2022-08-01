@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+      <TargetFramework>net6.0-windows</TargetFramework>
+      <Platforms>AnyCPU;x64</Platforms>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\PMB.Browsers.Common\PMB.Browsers.Common.csproj" />
+      <ProjectReference Include="..\PMB.Domain\PMB.Domain.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="cef.redist.x64" Version="101.0.18" />
+      <PackageReference Include="CefSharp.Common.NETCore" Version="101.0.180" />
+      <PackageReference Include="CefSharp.Wpf.NETCore" Version="101.0.180" />
+      <PackageReference Include="JetBrains.Annotations" Version="2021.3.0" />
+      <PackageReference Include="MediatR" Version="10.0.1" />
+      <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="10.0.1" />
+      <PackageReference Include="PMB.Abb.Client" Version="1.196.0" />
+      <PackageReference Include="PMB.Client" Version="1.196.0" />
+      <PackageReference Include="SocketIOClient" Version="3.0.5" />
+      <PackageReference Include="NLog.Extensions.Logging" Version="1.7.4" />
+    </ItemGroup>
+
+</Project>

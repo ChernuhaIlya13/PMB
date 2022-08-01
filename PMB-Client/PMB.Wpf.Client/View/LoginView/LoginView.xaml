@@ -1,0 +1,60 @@
+﻿<mah:MetroWindow x:Class="PMB.Wpf.Client.View.LoginView.LoginView"
+                 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                 xmlns:local="clr-namespace:PMB.Wpf.Client.View.LoginView"
+                 xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+                 mc:Ignorable="d"
+                 Title="LoginView" Height="450" Width="800"
+                 xmlns:Dialog="clr-namespace:MahApps.Metro.Controls.Dialogs;assembly=MahApps.Metro"
+                 Dialog:DialogParticipation.Register="{Binding}">
+    <Grid Background="#7BC7C4">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30*"></RowDefinition>
+            <RowDefinition Height="40*"></RowDefinition>
+            <RowDefinition Height="20*"></RowDefinition>
+        </Grid.RowDefinitions>
+         <Border Grid.Column="1" Grid.Row="1" CornerRadius="10" BorderThickness="5" BorderBrush="White">
+            <Grid  Background="White">
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="0" Foreground="#C4C4C4" FontSize="20"  HorizontalAlignment="Center" VerticalAlignment="Center">Войти в аккаунт</TextBlock>
+                <Grid Grid.Row="1" Margin="2 0 0 0" Grid.RowSpan="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="100*"></ColumnDefinition>
+                        <ColumnDefinition ></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <TextBox Text="{Binding Path=UserKey, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.RowSpan="2" Grid.Column="0" VerticalAlignment="Center"></TextBox>
+                    <Image Panel.ZIndex="100" Margin="240 0 0 0" Source="../../Images/User-icon.png" Width="10" Height="10"></Image>
+                </Grid>
+                <Grid Grid.Row="3">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="35px"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Button Command="{Binding Path=ForgotKey,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Foreground="#FF4D4545" Margin="4 0 4 2" Grid.Column="0"  MaxWidth="200" MaxHeight="100">
+                        <Button.Background>
+                            <ImageBrush/>
+                        </Button.Background> Забыли пароль?
+                    </Button>
+                    <Button Command="{Binding Path=Login}" Margin="4 0 4 2" Grid.Column="1" Foreground="#FF4D4545" MaxWidth="200" MaxHeight="100">Войти</Button>
+                </Grid>
+            </Grid>
+        </Border>
+        
+
+    </Grid>
+</mah:MetroWindow>

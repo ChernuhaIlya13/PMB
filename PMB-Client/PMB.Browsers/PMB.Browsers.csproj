@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0-windows</TargetFramework>
+        <UseWPF>true</UseWPF>
+        <Platforms>AnyCPU;x64</Platforms>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="cef.redist.x64" Version="101.0.18" />
+      <PackageReference Include="CefSharp.Common.NETCore" Version="101.0.180" />
+      <PackageReference Include="CefSharp.Wpf.NETCore" Version="101.0.180" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\PMB.Bet365\PMB.Bet365.csproj" />
+      <ProjectReference Include="..\PMB.Fonbet\PMB.Fonbet.csproj" />
+      <ProjectReference Include="..\PMB.Pinnacle\PMB.Pinnacle.csproj" />
+    </ItemGroup>
+</Project>
